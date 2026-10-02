@@ -232,53 +232,12 @@
             THANK YOU FOR PLAYING OUR HIGHSCORE OF LOVE! ✨
         </footer>
     </div>
-
-    <script>
-        function toggleSection(id) {
-            const el = document.getElementById(id);
-            if (el.style.display === 'block') {
-                el.style.display = 'none';
-            } else {
-                el.style.display = 'block';
-            }
-        }
-
-// Hitung hari dari tanggal 14 September 2026
-// (Tahun, Bulan [0-11 di mana 9 adalah September], Tanggal)
-const startDate = new Date(2026, 9, 14).getTime(); 
-const now = new Date().getTime();
-const diffTime = now - startDate;
-const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-document.getElementById('daysCount').innerText = diffDays >= 0 ? diffDays : 0;
-
-        // Music player control
-        const music = document.getElementById('bgMusic');
-        const playBtn = document.getElementById('playBtn');
-
-        function togglePlayMusic() {
-            if (music.paused) {
-                music.play();
-                playBtn.innerText = "⏸ Pause Music";
-            } else {
-                music.pause();
-                playBtn.innerText = "▶ Play Music";
-            }
-        }
-    </script>
-    <!-- Konten web kamu sebelumnya di atas sini -->
-
-    <script>
-        window.onload = function() {
-            const startDate = new Date(2026, 9, 14).getTime(); 
-            const now = new Date().getTime();
-            const diffTime = now - startDate;
-            const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-            
-            const countElement = document.getElementById('daysCount');
-            if (countElement) {
-                countElement.innerText = diffDays >= 0 ? diffDays : 0;
-            }
-        };
-    </script>
+<script>
+    var startDate = new Date(2026, 9, 14).getTime();
+    var now = new Date().getTime();
+    var diffDays = Math.floor((now - startDate) / (1000 * 60 * 60 * 24));
+    var el = document.getElementById('daysCount');
+    if (el) el.innerText = diffDays;
+</script>
 </body>
 </html>

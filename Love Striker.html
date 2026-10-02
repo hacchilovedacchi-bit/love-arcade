@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Love Arcade | 1st Month Anniversary</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #12090c;
+            --card-bg: #1e1115;
+            --maroon-primary: #5c1d24;
+            --maroon-accent: #802b35;
+            --text-main: #f3e8eb;
+            --text-muted: #c4b0b5;
+            --border-color: #3b1b22;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        .container {
+            width: 100%;
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding-bottom: 40px;
+        }
+        .ticket-header {
+            background: linear-gradient(135deg, var(--card-bg), var(--maroon-primary));
+            border: 2px dashed var(--maroon-accent);
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 20px;
+            color: #ffccd5;
+            margin-bottom: 5px;
+        }
+        .ticket-box {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+        }
+        .section-title {
+            font-family: 'Cinzel', serif;
+            font-size: 15px;
+            color: #ffccd5;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .station-item {
+            background: rgba(92, 29, 36, 0.2);
+            border: 1px solid var(--maroon-accent);
+            padding: 12px 16px;
+            border-radius: 12px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .station-item:hover {
+            background: rgba(128, 43, 53, 0.4);
+        }
+        .content-display {
+            display: none;
+            background: #170d10;
+            padding: 16px;
+            border-radius: 10px;
+            border-left: 3px solid var(--maroon-accent);
+            margin-top: 10px;
+            font-size: 13px;
+            line-height: 1.7;
+            white-space: pre-line;
+        }
+        .polaroid {
+            background: #fff;
+            padding: 10px 10px 25px 10px;
+            border-radius: 4px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            margin-bottom: 10px;
+        }
+        .polaroid img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 2px;
+        }
+        .polaroid p {
+            font-family: 'Cinzel', serif;
+            color: #333;
+            font-size: 12px;
+            text-align: center;
+            margin-top: 8px;
+        }
+        .music-btn {
+            background: var(--maroon-accent);
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: 'Cinzel', serif;
+            font-size: 12px;
+            margin-top: 10px;
+            transition: background 0.2s;
+        }
+        .music-btn:hover { background: #a33845; }
+        footer {
+            text-align: center;
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 20px;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ELEMEN AUDIO (Taruh file MP3 kamu satu folder dengan nama 'lagu-kita.mp3') -->
+    <audio id="bgMusic" loop>
+        <source src="lagu-kita.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="container">
+        <!-- Header Tiket -->
+        <div class="ticket-header">
+            <h1>🎫 PIECES OF US</h1>
+            <p style="font-size: 11px; color: var(--text-muted); letter-spacing: 2px;">HAPPY 1ST MONTH ANNIVERSARY • 14 SEPT</p>
+        </div>
+
+        <!-- Station 1: Music Player -->
+        <div class="ticket-box">
+            <div class="section-title">🎵 Station 1: Song For You</div>
+            <div class="station-item" onclick="toggleSection('songContent')">
+                <span>▶ RE-OPEN: Thinking Out Loud</span>
+                <span style="font-size: 11px; color: var(--text-muted);">Station-1</span>
+            </div>
+            <div class="content-display" id="songContent">
+                <b>Thinking Out Loud - Ed Sheeran</b><br><br>
+                This isn't just a favorite song—it's a memory. Every time it starts playing, I can't help but think of you and everything we've been through together.<br>
+                <button class="music-btn" onclick="togglePlayMusic()" id="playBtn">▶ Play Music</button>
+            </div>
+        </div>
+
+        <!-- Station 2: Days Together -->
+        <div class="ticket-box">
+            <div class="section-title">⏳ Station 2: Days Together</div>
+            <div class="station-item" onclick="toggleSection('daysContent')">
+                <span>▶ RE-OPEN: Our Timeline Counter</span>
+                <span style="font-size: 11px; color: var(--text-muted);">Station-2</span>
+            </div>
+            <div class="content-display" id="daysContent">
+                📅 <b>Anniversary: September 14, 2025</b><br><br>
+                <span id="daysCount" style="font-family: 'Cinzel', serif; font-size: 18px; color: #ffccd5; font-weight: bold;">0</span> Days & Counting...<br><br>
+                Setiap detik bersamamu adalah hal paling berharga. Terima kasih sudah melangkah sejauh ini bersama.
+            </div>
+        </div>
+
+        <!-- Station 3: When We First Met (Chat Pertama) -->
+        <div class="ticket-box">
+            <div class="section-title">💬 Station 3: When We First Met</div>
+            <div class="station-item" onclick="toggleSection('metContent')">
+                <span>▶ RE-OPEN: First Chat Memory</span>
+                <span style="font-size: 11px; color: var(--text-muted);">Station-3</span>
+            </div>
+            <div class="content-display" id="metContent">
+                <!-- Ganti 'chat-pertama.png' dengan nama file screenshot chat kalian -->
+                <div class="polaroid">
+                    <img src="chat-pertama.jpeg" alt="First Chat">
+                    <p>FIRST CHAT PHOTO 💌</p>
+                </div>
+                I still remember how ordinary that day seemed. There was nothing that hinted it would become one of the most important days of my life. Looking back now, it's funny how something so simple could quietly change everything.
+            </div>
+        </div>
+
+        <!-- Station 4: A Piece of Us (Foto Bareng) -->
+        <div class="ticket-box">
+            <div class="section-title">🖼️ Station 4: A Piece Of Us</div>
+            <div class="station-item" onclick="toggleSection('photoContent')">
+                <span>▶ RE-OPEN: Save File #01</span>
+                <span style="font-size: 11px; color: var(--text-muted);">Station-4</span>
+            </div>
+            <div class="content-display" id="photoContent">
+                <!-- Ganti 'foto-berdua.png' dengan nama file foto bareng kalian -->
+                <div class="polaroid">
+                    <img src="foto-berdua.jpeg" alt="Our Memory">
+                    <p>SAVE FILE #01 ❤️</p>
+                </div>
+                It's strange how one photograph can hold so much without saying a single word. In just one frame, it quietly keeps the laughter we shared, the comfort of being together, and a version of us that time can never take away.
+            </div>
+        </div>
+
+        <!-- Station 5: Long Text / Heartfelt Letter (Sesuai Video) -->
+        <div class="ticket-box">
+            <div class="section-title">💌 Station 5: Long Text</div>
+            <div class="station-item" onclick="toggleSection('letterContent')">
+                <span>▶ OPEN: Heartfelt Letter</span>
+                <span style="font-size: 11px; color: var(--text-muted);">Station-5</span>
+            </div>
+            <div class="content-display" id="letterContent">
+                <b>To the one I'll always choose,</b><br><br>
+                I don't think I'll ever find the perfect words to explain how much you mean to me, but I'll try anyway.<br><br>
+                If someone asked me what my favorite memory is, I honestly wouldn't know how to answer. Is it the first time we talked? The first time we met? The little laughs we shared over the smallest things? Or the quiet moments where we didn't have to say anything at all? Somehow, every memory with you feels like my favorite.<br><br>
+                Thank you for being patient with me, for understanding me even when I don't know how to explain myself, and for making ordinary days feel a little brighter just by being there. You've become such an important part of my life without even realizing it.<br><br>
+                I know we won't always have perfect days. We'll have disagreements, misunderstandings, and moments where things don't go the way we hoped. But if there's one thing I'm sure about, it's that I want us to keep choosing each other through all of it. Not because love is always easy, but because I think you're worth every difficult conversation, every compromise, and every tomorrow.<br><br>
+                This little website isn't really about the tickets, the pictures, or the music. They're just small reminders of what we've built together. The real gift has always been the time we've shared and the memories we've created along the way.<br><br>
+                I hope that whenever life feels overwhelming, you'll come back here someday, read this again, and remember that there is someone who feels incredibly lucky to have met you.<br><br>
+                Thank you for every smile, every laugh, every late-night conversation, and every little moment that became a memory I'll never want to lose.<br><br>
+                No matter where life takes us next, I hope we never stop making new memories together.<br><br>
+                <b>I love you, always. ❤️</b>
+            </div>
+        </div>
+
+        <footer>
+            THANK YOU FOR PLAYING OUR HIGHSCORE OF LOVE! ✨
+        </footer>
+    </div>
+
+    <script>
+        function toggleSection(id) {
+            const el = document.getElementById(id);
+            if (el.style.display === 'block') {
+                el.style.display = 'none';
+            } else {
+                el.style.display = 'block';
+            }
+        }
+
+        // Hitung hari dari tanggal 14 September 2025
+        const startDate = new Date(2026, 9, 14).getTime(); // Bulan 8 = September
+        const now = new Date().getTime();
+        const diffDays = Math.floor((now - startDate) / (1000 * 60 * 60 * 24));
+        document.getElementById('daysCount').innerText = diffDays >= 0 ? diffDays : 0;
+
+        // Music player control
+        const music = document.getElementById('bgMusic');
+        const playBtn = document.getElementById('playBtn');
+
+        function togglePlayMusic() {
+            if (music.paused) {
+                music.play();
+                playBtn.innerText = "⏸ Pause Music";
+            } else {
+                music.pause();
+                playBtn.innerText = "▶ Play Music";
+            }
+        }
+    </script>
+</body>
+</html>

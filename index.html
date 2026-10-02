@@ -265,5 +265,20 @@ document.getElementById('daysCount').innerText = diffDays >= 0 ? diffDays : 0;
             }
         }
     </script>
+    <!-- Konten web kamu sebelumnya di atas sini -->
+
+    <script>
+        window.onload = function() {
+            const startDate = new Date(2026, 9, 14).getTime(); 
+            const now = new Date().getTime();
+            const diffTime = now - startDate;
+            const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+            
+            const countElement = document.getElementById('daysCount');
+            if (countElement) {
+                countElement.innerText = diffDays >= 0 ? diffDays : 0;
+            }
+        };
+    </script>
 </body>
 </html>
